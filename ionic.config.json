@@ -1,0 +1,8 @@
+{
+  "name": "ionic-olx",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
