@@ -1,11 +1,30 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
- 
+<ion-content padding *ngIf="loadind">
+
+  <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar>
+
+  <ion-card class="card-home" (click)="onClickCard(ad)" *ngFor="let ad of ads">
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-4 no-padding>
+          <ion-thumbnail no-margin item-start>
+            <img [src]="ad.images[0]" alt="{{ad.title}}">
+          </ion-thumbnail>
+        </ion-col>
+        <ion-col>
+          <h2 ion-text>{{ad.title}}</h2>
+          <h3 ion-text>R$ {{ad.price}}</h3>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

@@ -4,12 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AdPage } from './../pages/ad/ad';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ApiProvider } from '../providers/api/api';
 
 @NgModule({
   declarations: [
+    AdPage,
     MyApp,
     HomePage
   ],
@@ -19,6 +21,7 @@ import { ApiProvider } from '../providers/api/api';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    AdPage,
     MyApp,
     HomePage
   ],

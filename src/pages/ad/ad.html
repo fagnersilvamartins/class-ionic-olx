@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Ad</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding *ngIf="loading">
+
+  <div *ngIf="ad.images.length == 1">
+    <ion-thumbnail no-margin item-start>
+      <img [src]="ad.images[0]" alt="{{ad.title}}">
+    </ion-thumbnail>
+  </div>
+
+  <div *ngIf="ad.images.length > 1">
+    <ion-slides pager>
+
+      <ion-slide *ngFor="let image of ad.images">
+        <ion-thumbnail no-margin item-start>
+          <img [src]="image" alt="{{ad.title}}">
+        </ion-thumbnail>
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+
+  <ion-list>
+    <ion-item no-padding>
+      <ion-title ion-text>{{ad.title}}</ion-title>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-icon ios="logo-usd" md="logo-usd" item-start color="secondary"></ion-icon>
+      <h3 ion-text>{{ad.price}}</h3>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-icon name="pin" item-start color="secondary"></ion-icon>
+      <h3>{{ad.region}}</h3>
+    </ion-item>
+    <p ion-text>{{ad.description}}</p>
+  </ion-list>
+
+</ion-content>
