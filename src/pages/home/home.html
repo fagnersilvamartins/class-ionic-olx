@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       Home
     </ion-title>
@@ -7,6 +10,10 @@
 </ion-header>
 
 <ion-content padding *ngIf="loadind">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-searchbar no-padding (ionInput)="getItems($event)"></ion-searchbar>
 

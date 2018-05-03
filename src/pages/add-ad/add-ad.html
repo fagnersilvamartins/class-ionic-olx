@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Add Ad</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>      
+      <ion-item>
+        <ion-label floating>Region</ion-label>
+        <ion-select multiple="false" >
+          <ion-option value="Paraíba">Paraíba</ion-option>          
+          <ion-option value="São Paulo">São Paulo</ion-option>  
+          <ion-option value="Rio de Janeiro">Rio de Janeiro</ion-option>  
+        </ion-select>
+      </ion-item>  
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button block (click)="onChangeCamera()">
+      <ion-icon item-start name="camera"></ion-icon>
+    </button>
+
+    <img [src]="base64Image" *ngIf="base64Image" />
+
+</ion-content>

@@ -72,7 +72,7 @@ export class ApiProvider {
           "http://img.olx.com.br/images/40/407819038039775.jpg"
         ]
       }
-    ];
+    ].sort();
   }
 
   getRegion(index): Region {

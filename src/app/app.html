@@ -1,1 +1,16 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="mainPageApp">
+    <ion-content padding>
+        <ion-list>
+            <ion-item (click)="onAddpage()" menuClose>
+                <ion-icon name="add" item-start color="secondary"></ion-icon>
+                <ion-label>Add ad</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="" color="secondary"></ion-icon>
+                <ion-label>Aboult</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #mainPageApp [root]="rootPage"></ion-nav>

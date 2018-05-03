@@ -41,4 +41,11 @@ export class HomePage {
     this.loader.present();
   }
 
+  doRefresh(refresher) {
+    setTimeout(() => {
+      this.ads = this.apiProvider.getAllAds();
+      refresher.complete();
+    }, 2000);
+  }
+
 }
