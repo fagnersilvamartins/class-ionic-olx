@@ -18,6 +18,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      console.log(platform.platforms());
+      if (platform.is('android')) {
+        console.log('>>>>>>>>>Android');
+      }
     });
   }
 

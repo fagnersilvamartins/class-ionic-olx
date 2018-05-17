@@ -23,10 +23,11 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.ads = this.apiProvider.getAllAds();
-    console.log(this.loader);
-    this.loader.dismiss();
-    this.loadind = true;
+    this.apiProvider.getAllAds().then((result) => {
+      this.ads = result;
+      this.loader.dismiss();
+      this.loadind = true;
+    });    
   }
 
   onClickCard(ad): void {
@@ -42,10 +43,10 @@ export class HomePage {
   }
 
   doRefresh(refresher) {
-    setTimeout(() => {
-      this.ads = this.apiProvider.getAllAds();
+    this.apiProvider.getAllAds().then((result) => {
+      this.ads = result;
       refresher.complete();
-    }, 2000);
+    }); 
   }
 
 }

@@ -4,12 +4,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage'
 
 import { AddAdPage } from './../pages/add-ad/add-ad';
 import { AdPage } from './../pages/ad/ad';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ApiProvider } from '../providers/api/api';
+import { AppStorageService } from '../providers/app-storage-service/app-storage-service';
+import { AppPlatformProvider } from '../providers/app-platform/app-platform';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ApiProvider } from '../providers/api/api';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'olxdb'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +40,9 @@ import { ApiProvider } from '../providers/api/api';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider
+    ApiProvider,
+    AppStorageService,
+    AppPlatformProvider
   ]
 })
 export class AppModule {}

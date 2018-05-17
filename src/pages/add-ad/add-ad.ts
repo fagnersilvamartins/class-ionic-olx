@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
+import { Ad } from './../../models/ad';
+import { Region } from '../../models/region';
+import { AppStorageService } from '../../providers/app-storage-service/app-storage-service';
+
 /**
  * Generated class for the AddAdPage page.
  *
@@ -16,7 +20,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class AddAdPage {
 
-  base64Image: String;  
+  private ad: Ad = new Ad('', '', new Region(''), 0, []);
 
   options: CameraOptions = {
     quality: 100,
@@ -26,9 +30,10 @@ export class AddAdPage {
   }
 
   constructor(
-    private camera: Camera, 
+    private camera: Camera,
     private plataform: Platform,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
+    private appStorageService: AppStorageService,
     public navParams: NavParams) {
 
   }
@@ -36,12 +41,17 @@ export class AddAdPage {
   onChangeCamera(): void {
     this.plataform.ready().then(() => {
       this.camera.getPicture(this.options).then((imageData) => {
-        this.base64Image = 'data:image/jpeg;base64,' + imageData;
-       }, (err) => {
+        this.ad.images.push('data:image/jpeg;base64,' + imageData);
+
+      }, (err) => {
         // Handle error
-       });
+      });
     });
-    
+
+  }
+
+  onSave() {
+    this.appStorageService.save(this.ad);
   }
 
 }

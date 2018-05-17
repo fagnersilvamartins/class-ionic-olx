@@ -11,19 +11,23 @@
     <ion-list>
       <ion-item>
         <ion-label floating>Title</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input [(ngModel)]="ad.title" type="text"></ion-input>
       </ion-item>      
       <ion-item>
         <ion-label floating>Region</ion-label>
-        <ion-select multiple="false" >
+        <ion-select [(ngModel)]="ad.region" multiple="false" >
           <ion-option value="Paraíba">Paraíba</ion-option>          
           <ion-option value="São Paulo">São Paulo</ion-option>  
           <ion-option value="Rio de Janeiro">Rio de Janeiro</ion-option>  
         </ion-select>
       </ion-item>  
       <ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input [(ngModel)]="ad.price" type="text"></ion-input>
+      </ion-item> 
+      <ion-item>
         <ion-label floating>Description</ion-label>
-        <ion-textarea></ion-textarea>
+        <ion-textarea [(ngModel)]="ad.description"></ion-textarea>
       </ion-item>
     </ion-list>
 
@@ -31,6 +35,27 @@
       <ion-icon item-start name="camera"></ion-icon>
     </button>
 
-    <img [src]="base64Image" *ngIf="base64Image" />
+    <div *ngIf="ad.images.length == 1">
+      <ion-thumbnail no-margin item-start>
+        <img [src]="ad.images[0]" alt="{{ad.title}}">
+      </ion-thumbnail>
+    </div>
+  
+    <div *ngIf="ad.images.length > 1">
+      <ion-slides pager>
+  
+        <ion-slide *ngFor="let image of ad.images">
+          <ion-thumbnail no-margin item-start>
+            <img [src]="image" alt="{{ad.title}}">
+          </ion-thumbnail>
+        </ion-slide>
+      </ion-slides>
+  
+    </div>   
+    
+    <button ion-button block color="dark" (click)="onSave()">
+      <ion-icon item-start name="save"></ion-icon>
+      Save
+    </button>
 
 </ion-content>
