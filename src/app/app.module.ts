@@ -1,3 +1,4 @@
+import { HidePlatformDirective } from './../directives/hide-platform/hide-platform';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -6,34 +7,29 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage'
 
-import { AddAdPage } from './../pages/add-ad/add-ad';
-import { AdPage } from './../pages/ad/ad';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ApiProvider } from '../providers/api/api';
 import { AppStorageService } from '../providers/app-storage-service/app-storage-service';
 import { AppPlatformProvider } from '../providers/app-platform/app-platform';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    AddAdPage,
-    AdPage,
+  declarations: [ 
     MyApp,
-    HomePage
+    HidePlatformDirective
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      preloadModules: true
+    }),
     IonicStorageModule.forRoot({
       name: 'olxdb'
     })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    AddAdPage,
-    AdPage,
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     Camera,
@@ -42,7 +38,8 @@ import { AppPlatformProvider } from '../providers/app-platform/app-platform';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
     AppStorageService,
-    AppPlatformProvider
+    AppPlatformProvider,
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
   ]
 })
 export class AppModule {}

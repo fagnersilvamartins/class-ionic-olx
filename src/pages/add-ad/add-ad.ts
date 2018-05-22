@@ -13,7 +13,9 @@ import { AppStorageService } from '../../providers/app-storage-service/app-stora
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  priority: 'high'
+})
 @Component({
   selector: 'page-add-ad',
   templateUrl: 'add-ad.html',

@@ -3,14 +3,12 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AddAdPage } from './../pages/add-ad/add-ad';
-import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = 'HomePage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -26,7 +24,7 @@ export class MyApp {
   }
 
   onAddpage(): void {
-    this.navCtrl.push(AddAdPage);
+    this.navCtrl.push('AddAdPage');
   }
 }
 

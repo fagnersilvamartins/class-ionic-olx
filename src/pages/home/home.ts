@@ -1,10 +1,10 @@
-import { AdPage } from './../ad/ad';
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, IonicPage } from 'ionic-angular';
 
 import { ApiProvider } from '../../providers/api/api';
 import { Ad } from '../../models/ad';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -31,7 +31,7 @@ export class HomePage {
   }
 
   onClickCard(ad): void {
-    this.navCtrl.push(AdPage, ad);
+    this.navCtrl.push('app-ad-page', {id: ad.id, ad: ad});
   }
 
   presentLoading() {

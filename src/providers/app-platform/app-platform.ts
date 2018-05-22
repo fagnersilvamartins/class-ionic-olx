@@ -10,6 +10,10 @@ export class AppPlatformProvider {
     this.setPlatform();
   }
 
+  getCurrentPlatform(): String {
+    return this.currentPlatform;
+  }
+
   setPlatform() {
     if(this.platform.is('android')) {
       this.currentPlatform = 'md';
